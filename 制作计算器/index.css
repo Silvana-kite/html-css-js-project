@@ -1,0 +1,96 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #333;
+}
+.calculator {
+    position: relative;
+    width: 300px;
+}
+.calculator .buttons {
+    position: relative;
+    display: grid;
+}
+.calculator .buttons #value {
+    position: relative;
+    left: 8px;
+    margin-bottom: 12px;
+    grid-column: span 4;
+    height: 100px;
+    line-height: 100px;
+    padding: 0 20px;
+    border-radius: 10px;
+    background: #a7af7c;
+    text-align: right;
+    font-size: 1.5em;
+    color: #3a3c2e;
+    overflow: hidden;
+    box-shadow: inset 0 6px 1px 0 rgba(0,0,0,0.35),
+    0 5px 5px rgba(0,0,0,0.5),
+    0 15px 25px rgba(0,0,0,0.35);
+    user-select: none;
+    width: calc(100% - 16px);
+}
+.calculator .buttons #value::before {
+    content: '';
+    position: absolute;
+    inset: 5px 3px;
+    border-top: 1px solid #ccc;
+    filter: blur(2px);
+}
+.calculator .buttons span {
+    position: relative;
+    padding: 10px;
+    margin: 6px;
+    min-width: 40px;
+    font-size: 1.1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #999;
+    border: 2px solid #222;
+    border-radius: 6px;
+    background: linear-gradient(#555353,#363535);
+    box-shadow: inset 0 6px 1px 0 rgba(0,0,0,0.35),
+    0 5px 5px rgba(0,0,0,0.5),
+    0 15px 25px rgba(0,0,0,0.35);
+    cursor: pointer;
+    user-select: none;
+}
+.calculator .buttons span::before {
+    content: '';
+    position: absolute;
+    inset: 5px 3px;
+    border-top: 1px solid #ccc;
+    filter: blur(2px);
+}
+.calculator .buttons span:active {
+    box-shadow: inset 0 2px 2px 0 rgba(0,0,0,0.35),
+    0 5px 15px rgba(0,0,0,0.5),
+    0 15px 25px rgba(0,0,0,0.35);
+    color: #fff;
+    text-shadow: 0 0 5px #219cf3,
+    0 0 8px #219cf3;
+}
+.calculator .buttons span#Clear{
+    grid-column: span 2;
+    background: #f44336;
+    color: #fff;
+}
+.calculator .buttons span#plus{
+    grid-row: span 2;
+    background: #31a935;
+    color: #fff;
+}
+.calculator .buttons span#equal{
+    background: #219cf3;
+    color: #fff;
+}
