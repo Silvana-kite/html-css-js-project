@@ -20,7 +20,7 @@ body {
 .scan .fingerprint {
     position: relative;
     width: 300px;
-    height: 480px;
+    height: 420px;
     background: url(fingerPrint_01.png);
     background-size: 300px;
     background-repeat: no-repeat;
