@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实现动画文本轨迹效果</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="cursor"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let cursor = document.querySelector('.cursor');
+            let textContent = "animate text trail effect";
+
+            for (let i = 0; i <= textContent.length; i++) {
+                let span = document.createElement('span');
+                span.classList.add('text');
+                span.style.setProperty('--i', i+ 1);
+                span.style.left = i * 0.6 + 'em';
+                span.textContent = textContent[i];
+                span.style.filter = `hue-rotate(${i * 10}deg)`
+                cursor.appendChild(span);
+            }
+
+            document.addEventListener("mousemove", e => {
+                gsap.to(".text", {
+                    x: e.clientX,
+                    y: e.clientY,
+                    stagger: 0.05
+                })
+            })
+
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用JavaScript创建游戏-图片拼图</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="drag" id="drag">
+        <div class="dragBox">
+            <div class="images" draggable="true" ondragstart="drag(event)" id="block1" style="--img:url(grid_1.jpg);"></div>
+        </div>
+        <div class="dragBox">
+            <div class="images" draggable="true" ondragstart="drag(event)" id="block2" style="--img:url(grid_2.jpg);"></div>
+        </div>
+        <div class="dragBox">
+            <div class="images" draggable="true" ondragstart="drag(event)" id="block3" style="--img:url(grid_3.jpg);"></div>
+        </div>
+        <div class="dragBox">
+            <div class="images" draggable="true" ondragstart="drag(event)" id="block4" style="--img:url(grid_4.jpg);"></div>
+        </div>
+        <div class="dragBox">
+            <div class="images" draggable="true" ondragstart="drag(event)" id="block5" style="--img:url(grid_5.jpg);"></div>
+        </div>
+        <div class="dragBox">
+            <div class="images" draggable="true" ondragstart="drag(event)" id="block6" style="--img:url(grid_6.jpg);"></div>
+        </div>
+        <div class="dragBox">
+            <div class="images" draggable="true" ondragstart="drag(event)" id="block7" style="--img:url(grid_7.jpg);"></div>
+        </div>
+        <div class="dragBox">
+            <div class="images" draggable="true" ondragstart="drag(event)" id="block8" style="--img:url(grid_8.jpg);"></div>
+        </div>
+        <div class="dragBox">
+            <div class="images" draggable="true" ondragstart="drag(event)" id="block9" style="--img:url(grid_9.jpg);"></div>
+        </div>
+    </div>
+
+    <div class="board">
+        <div class="dropBox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="dropBox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="dropBox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="dropBox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="dropBox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="dropBox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="dropBox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="dropBox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        <div class="dropBox" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </div>
+
+    <button class="reset" onClick="window.location.reload();"> Reset Puzzle</button>
+
+    <script>
+        function drag(event) {
+        // 关键：设置需要传递的数据（元素ID）
+        event.dataTransfer.setData("text", event.target.id);
+        console.log("data", event.target.id);
+    }
+
+    function allowDrop(event) {
+        event.preventDefault();
+    }
+
+    function drop(event) {
+        event.preventDefault();
+        // 获取传递的元素ID
+        let data = event.dataTransfer.getData("text");
+        // 获取对应的DOM节点并添加
+        event.target.appendChild(document.getElementById(data));
+    }
+
+    // 随机排序代码保持不变
+    onload = function() {
+        let parent = document.getElementById('drag');
+        let frag = document.createDocumentFragment();
+        while (parent.children.length) {
+            frag.appendChild(parent.children[Math.floor(Math.random() * parent.children.length)]);
+        }
+        parent.appendChild(frag);
+    }
+    </script>
+</body>
+</html>

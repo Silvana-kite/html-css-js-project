@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用CSS和Javascript的3D无限图像滑块</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="box">
+        <div class="item"><img src="img1.jpg"/></div>
+        <div class="item"><img src="img2.png"/></div>
+        <div class="item"><img src="img3.png"/></div>
+        <div class="item"><img src="img4.jpg"/></div>
+        <div class="item"><img src="img5.jpg"/></div>
+        <div class="item"><img src="img6.png"/></div>
+        <div class="item"><img src="img7.png"/></div>
+    </div>
+    <div class="buttons">
+        <span class="prev"></span>
+        <span class="next"></span>
+    </div>
+    <script>
+        let prev = document.querySelector('.prev');
+        let next = document.querySelector('.next');
+
+        next.addEventListener('click', function() {
+            let items = document.querySelectorAll('.item');
+            document.querySelector('.box').appendChild(items[0]);
+        })
+        prev.addEventListener('click', function() {
+            let items = document.querySelectorAll('.item');
+            document.querySelector('.box').prepend(items[items.length - 1]);
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+body {
+    background: #222;
+    overflow: hidden;
+    background-image: linear-gradient(to right, #333 1px, transparent 1px),
+    linear-gradient(to bottom, #333 1px, transparent 1px);
+    background-size: 4vh 4vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.cursor {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    pointer-events: none;
+}
+.cursor .text {
+    position: absolute;
+    font-size: 2em;
+    color: #00ff9a;
+    text-shadow: 0 0 15px #00ff9a,
+    0 0 50px #00ff9a;
+    text-transform: uppercase;
+    transform: translate(-50%, -50%);
+}
