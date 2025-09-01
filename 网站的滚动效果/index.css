@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #111;
+}
+.layer{
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #222;
+}
+.layer::before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  width: 80px;
+  height: 200px;
+  background: #222;
+  box-shadow: 0 calc(90vh - 100px) #222;
+}
+.plane {
+  position: absolute;
+  left: -55vh;
+  height: 100vh;
+}
+section {
+  height: 200vh;
+  background: url(image1.png);
+  background-size: cover;
+  background-attachment: fixed;
+}
+section.sec2 {
+  height: 100vh;
+  background: url(image2.png);
+  background-size: cover;
+  background-attachment: fixed;
+}
+.text {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.text h2 {
+  color: #fff;
+  font-size: 3em;
+  font-weight: 200;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+}
+.text h2 span {
+  font-size: 4em;
+  font-weight: 900;
+  letter-spacing: 0em;
+  background: url(image1.png);
+  background-size: cover;
+  background-attachment: fixed;
+  background-clip: text;
+  color: transparent;
+  
+}
