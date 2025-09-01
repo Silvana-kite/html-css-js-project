@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>密码强度检查器</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="box">
+        <h2>Password Strength<span id="text">Check</span></h2>
+        <input type="password" id="password" placeholder="Enter your password">
+        <div class="password-strength"></div>
+        <div class="password-strength"></div>
+        <div class="password-strength"></div>
+    </div>
+
+    <script>
+        let passwordInput = document.getElementById('password');
+        let passwordStrengthIndicators = document.querySelectorAll('.password-strength');
+
+        let text = document.getElementById('text');
+
+        passwordInput.addEventListener('input', function(event){
+            let password = event.target.value;
+            let strength = Math.min(password.length, 12);
+            let degree = strength * 30;
+
+            let gradientColor = strength <= 4 ? '#ff2c1c' : (strength <= 8 ? '#ff9800' : '#12ff12');
+            let strengthText = strength <= 4 ? 'Weak' : (strength <= 8 ? 'Medium' : 'Strong');
+
+            passwordStrengthIndicators.forEach((indicator, index) => {
+                indicator.style.background = `conic-gradient(${gradientColor} ${degree}deg, #1115 ${degree}deg)`
+            });
+            text.textContent = strengthText;
+            text.style.color = gradientColor;
+        })
+    </script>
+</body>
+</html>
