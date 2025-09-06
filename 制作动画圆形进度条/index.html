@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 设置视口，确保在移动设备上正确显示 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>制作动画圆形进度条</title>
+    <!-- 引入外部CSS样式文件 -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 容器，用于包裹所有圆形进度条 -->
+    <div class="container">
+        <!-- 圆形进度条1：data-degree存储目标进度，data-color存储进度条颜色 -->
+        <div class="circle" data-degree="84" data-color="#ff2972">
+            <h2 class="number">84<span>%</span></h2> <!-- 显示进度百分比 -->
+            <h4>Html</h4> <!-- 显示进度条对应的标题 -->
+        </div>
+        <!-- 圆形进度条2 -->
+        <div class="circle" data-degree="58" data-color="#dee800">
+            <h2 class="number">58<span>%</span></h2>
+            <h4>Html</h4>
+        </div>
+        <!-- 圆形进度条3 -->
+        <div class="circle" data-degree="95" data-color="#04fc43">
+            <h2 class="number">95<span>%</span></h2>
+            <h4>Html</h4>
+        </div>
+    </div>
+
+    <script>
+        // 等待DOM加载完成后执行代码
+        document.addEventListener("DOMContentLoaded", function(event) {
+            // 获取所有圆形进度条元素
+            let circle = document.querySelectorAll('.circle');
+            // 遍历每个进度条，添加动画效果
+            circle.forEach(function(progress) {
+                let degree = 0; // 初始进度（度）
+                // 获取目标进度（从data-degree属性）
+                let targetDegree = parseInt(progress.getAttribute('data-degree'));
+                // 获取进度条颜色（从data-color属性）
+                let color = progress.getAttribute('data-color');
+                // 获取显示百分比的元素
+                let number = progress.querySelector('.number');
+
+                // 定时器：每50毫秒更新一次进度
+                let interval = setInterval(function() {
+                    degree += 1; // 进度递增1度
+                    // 当进度超过目标值时，清除定时器并停止
+                    if (degree > targetDegree) {
+                        clearInterval(interval)
+                        return;
+                    }
+                    // 更新进度条背景（使用圆锥渐变实现圆形进度效果）
+                    progress.style.background = `conic-gradient(${color} 0% ${degree}%, #222 0%)`;
+                    // 更新显示的百分比数字
+                    number.innerHTML = `${degree}<span>%</span>`;
+                    // 设置数字颜色与进度条一致
+                    number.style.color = color
+                },50)
+            })
+        })
+    </script>
+</body>
+</html>
