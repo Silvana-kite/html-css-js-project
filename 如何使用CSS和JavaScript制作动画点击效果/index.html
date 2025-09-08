@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>如何使用CSS和JavaScript制作动画点击效果</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script>
+        let body = document.querySelector('body');
+        body.addEventListener('click', function(event) {
+            let spark = document.createElement('div');
+            spark.classList.add('spark');
+            body.appendChild(spark);
+
+            spark.style.top = (event.clientY - body.offsetTop) + 'px';
+            spark.style.left = (event.clientX - body.offsetLeft) + 'px';
+            spark.style.filter = `hue-rotate(${Math.random()*360}deg)`;
+
+
+            for(var i =0;i<=7;i++){
+                let span = document.createElement('span');
+                span.style.transform = `rotate(${i*45}deg)`;
+                spark.appendChild(span)
+            }
+
+            setTimeout(() => {
+                spark.remove();
+            },1000)
+        })
+    </script>
+</body>
+</html>
