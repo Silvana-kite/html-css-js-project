@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>前端效果集合 | 项目总览</title>
+    <!-- 网站图标支持多种浏览器和设备，添加版本参数避免缓存问题 -->
+    <link rel="icon" href="favicon.ico?v=1" type="image/x-icon" sizes="32x32" />
+    <link rel="shortcut icon" href="favicon.ico?v=1" type="image/x-icon" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico?v=1" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon.ico?v=1" />
+    <link rel="apple-touch-icon" href="favicon.ico?v=1" sizes="180x180" />
+    <meta name="theme-color" content="#3B82F6" />
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a29bd0cb0d45bdf00a01e86fa49b2396";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- 配置Tailwind -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#3B82F6",
+              secondary: "#10B981",
+              dark: "#1E293B",
+              light: "#F8FAFC",
+            },
+            fontFamily: {
+              sans: ["Inter", "system-ui", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .content-auto {
+          content-visibility: auto;
+        }
+        .card-hover {
+          @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+        }
+        .text-gradient {
+          @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+        }
+
+        /* 打赏相关样式 */
+        .donate-option {
+          @apply cursor-pointer transition-all duration-200;
+        }
+
+        .donate-option.active {
+          @apply scale-105;
+        }
+
+        /* 模态框动画 */
+        #donateModal {
+          animation: fadeIn 0.2s ease-out;
+        }
+
+        #donateModal .bg-white {
+          animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        @keyframes slideUp {
+          from {
+            transform: translateY(20px);
+            opacity: 0;
+          }
+          to {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+
+        /* 二维码容器样式 */
+        .qrcode-container {
+          @apply p-4 bg-white rounded-lg shadow-md;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-dark min-h-screen">
+    <!-- 导航栏 -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
+      <div
+        class="container mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <div class="flex items-center space-x-2">
+          <i class="fas fa-code text-primary text-2xl"></i>
+          <h1 class="text-xl md:text-2xl font-bold text-gradient">
+            前端效果集合
+          </h1>
+        </div>
+        <div class="flex items-center space-x-4">
+          <button
+            id="donateButton"
+            class="hidden md:flex items-center space-x-1 text-primary hover:text-primary/80 font-medium transition-colors"
+          >
+            <i class="fas fa-heart"></i>
+            <span>打赏</span>
+          </button>
+          <!-- 语言切换 -->
+          <button
+            id="languageToggle"
+            class="hidden md:flex items-center space-x-1 text-primary hover:text-primary/80 font-medium transition-colors"
+          >
+            <i class="fas fa-language"></i>
+            <span id="languageText">English</span>
+          </button>
+          <!-- 主题切换 -->
+          <button
+            id="themeToggle"
+            class="hidden md:flex items-center space-x-1 text-primary hover:text-primary/80 font-medium transition-colors"
+          >
+            <i class="fas fa-moon"></i>
+            <span id="themeText">暗黑</span>
+          </button>
+          <!-- <button class="md:hidden text-xl">
+          <i class="fas fa-bars"></i>
+        </button> -->
+          <button
+            id="donateButtonMobile"
+            class="flex md:hidden items-center text-primary hover:text-primary/80 p-2"
+          >
+            <i class="fas fa-heart"></i>
+          </button>
+          <button
+            id="languageToggleMobile"
+            class="flex md:hidden items-center text-primary hover:text-primary/80 p-2"
+          >
+            <i class="fas fa-language"></i>
+          </button>
+          <button
+            id="themeToggleMobile"
+            class="flex md:hidden items-center text-primary hover:text-primary/80 p-2"
+          >
+            <i class="fas fa-moon"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="container mx-auto px-4 py-8">
+      <!-- 页面标题 -->
+      <div class="text-center mb-12">
+        <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold mb-4">项目总览</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          各种前端效果演示项目，点击卡片即可查看对应效果
+        </p>
+      </div>
+      <!-- 搜索功能 -->
+      <div class="mb-8 max-w-xl mx-auto">
+        <div class="relative">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="搜索项目名称..."
+            class="w-full px-4 py-3 pl-10 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
+          />
+          <i
+            class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+          ></i>
+        </div>
+        <p
+          id="searchResultCount"
+          class="text-gray-500 text-sm mt-2 text-center"
+        ></p>
+      </div>
+      <!-- 项目展示区域 -->
+      <div class="relative overflow-hidden mb-8">
+        <!-- 可滑动的项目网格容器 -->
+        <div
+          id="projectsContainer"
+          class="overflow-y-auto max-h-[70vh] pr-2 pb-4 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent"
+        >
+          <div
+            id="projectGrid"
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          >
+            <!-- 项目卡片将通过JavaScript动态生成 -->
+          </div>
+        </div>
+      </div>
+
+      <!-- 分页控制 -->
+      <div id="pagination" class="flex justify-center items-center mt-8">
+        <button
+          id="prevPage"
+          class="px-4 py-2 mr-2 rounded border disabled:opacity-50 disabled:cursor-not-allowed"
+          disabled
+        >
+          上一页
+        </button>
+        <div id="pageInfo" class="px-4 py-2 text-gray-600">
+          第 1 页，共 1 页
+        </div>
+        <button
+          id="nextPage"
+          class="px-4 py-2 ml-2 rounded border disabled:opacity-50 disabled:cursor-not-allowed"
+          disabled
+        >
+          下一页
+        </button>
+      </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-8 mt-16">
+      <div class="container mx-auto px-4 text-center">
+        <div class="mb-4">
+          <i class="fas fa-code text-primary text-3xl"></i>
+        </div>
+        <p class="mb-2">前端效果集合 &copy; 2025</p>
+        <p class="text-gray-400 text-sm">使用HTML、CSS和JavaScript构建</p>
+        <p class="text-gray-400 text-sm">闽ICP备2025109548号-1</p>
+      </div>
+    </footer>
+
+    <script>
+      // 项目数据 - 根据你的文件夹名称生成，按日期降序排列（最新的在前）
+      const projects = [
+        {
+          name: "CSS动画效果",
+          folder: "20251213-CSS动画效果",
+        },
+        {
+          name: "实现点击脉冲效果",
+          folder: "20251210-使用CSS与JavaScript实现点击脉冲效果",
+        },
+        {
+          name: "CSS 产品卡片悬停效果",
+          folder: "20251208-CSS产品卡片悬停效果",
+        },
+        {
+          name: "JavaScript动态背景",
+          folder: "20251207-JavaScript动态背景",
+        },
+        {
+          name: "JavaScript像素图像动画效果",
+          folder: "20251124-JavaScript像素图像动画效果",
+        },
+        {
+          name: "使用普通 Javascript 的水平页面滚动",
+          folder: "20251118-使用普通Javascript的水平页面滚动",
+        },
+        {
+          name: "无限楼梯CSS动画效果",
+          folder: "20251117-无限楼梯CSS动画效果",
+        },
+        {
+          name: "实现文本打乱效果",
+          folder: "20251114-实现文本打乱效果",
+        },
+        {
+          name: "滚动页面上的活动链接",
+          folder: "20251112-使用Javascript滚动页面上的活动链接",
+        },
+        {
+          name: "实现键盘按键文本输入",
+          folder: "20251111-实现键盘按键文本输入",
+        },
+        {
+          name: "使用HTML和CSS实现创意单选按钮",
+          folder: "20251110-使用HTML和CSS实现创意单选按钮",
+        },
+        { name: "动画登录页面", folder: "20251107-动画登录页面" },
+        {
+          name: "制作自定义发光鼠标光标",
+          folder: "20251106-制作自定义发光鼠标光标",
+        },
+        {
+          name: "CSS自定义三角形形状复选框按钮",
+          folder: "20251104-CSS自定义三角形形状复选框按钮",
+        },
+        { name: "CSS倒边框半径卡", folder: "20251103-CSS倒边框半径卡" },
+        {
+          name: "JavaScript按钮悬停动画效果",
+          folder: "20251030-javaScript按钮悬停动画效果",
+        },
+        { name: "CSS创意等距设计", folder: "20251028-CSS创意等距设计" },
+        { name: "鼠标移入移出效果", folder: "20251027-鼠标移入移出效果" },
+        {
+          name: "CSS圆形图像旋转动画效果",
+          folder: "20251024-CSS圆形图像旋转动画效果",
+        },
+        {
+          name: "简单的CSS科幻卡片和悬停效果",
+          folder: "20251023-简单的CSS科幻卡片和悬停效果",
+        },
+        {
+          name: "如何使用HTML和CSS创建网站结账表单(信用卡支付表单)",
+          folder: "20251021-如何使用HTML和CSS创建网站结账表单(信用卡支付表单)",
+        },
+        {
+          name: "JavaScript中的下一页、上一页和悬停效果一一实现平滑过渡！",
+          folder:
+            "20251019-JavaScript中的下一页、上一页和悬停效果一一实现平滑过渡！",
+        },
+        {
+          name: "如何创建文本输入效果",
+          folder: "20251015-如何创建文本输入效果",
+        },
+        {
+          name: "3D玻璃形态卡片悬停效果",
+          folder: "20251013-3D玻璃形态卡片悬停效果",
+        },
+        {
+          name: "实现页面滚动时元素的显示效果",
+          folder: "20251011-实现页面滚动时元素的显示效果",
+        },
+        { name: "动画波浪边缘", folder: "20251009-动画波浪边缘" },
+        {
+          name: "使用CSS和JavaScript实现侧边栏标签导航菜单",
+          folder: "20251007-使用CSS和JavaScript实现侧边栏标签导航菜单",
+        },
+        {
+          name: "CSS玻璃态卡片悬停效果",
+          folder: "20251006-CSS玻璃态卡片悬停效果",
+        },
+        {
+          name: "创建待办事项列表应用程序",
+          folder: "20250930-创建待办事项列表应用程序",
+        },
+        {
+          name: "令人惊叹的粒子背景效果",
+          folder: "20250929-令人惊叹的粒子背景效果",
+        },
+        { name: "CSS动画效果", folder: "20250928-css动画效果" },
+        { name: "爆炸像素卡效果", folder: "20250927-爆炸像素卡效果" },
+        {
+          name: "CSS 3D 波浪圆动画效果",
+          folder: "20250926-CSS 3D 波浪圆动画效果",
+        },
+        { name: "像素按钮效果", folder: "20250925-像素按钮效果" },
+        { name: "焦点文本效果", folder: "20250924-焦点文本效果" },
+        { name: "纯CSS制作水滴", folder: "20250923-纯CSS制作水滴" },
+        { name: "3D加载旋转器", folder: "20250922-3D加载旋转器" },
+        { name: "CSS3D玻璃态动画效果", folder: "CSS3D玻璃态动画效果" },
+        { name: "CSS动画效果", folder: "CSS动画效果" },
+        { name: "CSS动画边框", folder: "CSS动画边框" },
+        {
+          name: "CSS和JavaScript中的惊人雨和闪电动画效果",
+          folder: "CSS和JavaScript中的惊人雨和闪电动画效果",
+        },
+        {
+          name: "CSS弯曲外部卡片UI设计带悬停效果",
+          folder: "CSS弯曲外部卡片UI设计带悬停效果",
+        },
+        { name: "CSS指纹扫描效果", folder: "CSS指纹扫描效果" },
+        { name: "CSS火环效果", folder: "CSS火环效果" },
+        {
+          name: "仅使用HtmI和CSS设计外部圆角盒子",
+          folder: "仅使用HtmI和CSS设计外部圆角盒子",
+        },
+        {
+          name: "使用CSS和Javascript的3D无限图像滑块",
+          folder: "使用CSS和Javascript的3D无限图像滑块",
+        },
+        { name: "光影文本阴影动画", folder: "光影文本阴影动画" },
+        { name: "制作动画圆形进度条", folder: "制作动画圆形进度条" },
+        { name: "制作计算器", folder: "制作计算器" },
+        { name: "动画切换按钮", folder: "动画切换按钮" },
+        {
+          name: "如何使用CSS和JavaScript制作动画点击效果",
+          folder: "如何使用CSS和JavaScript制作动画点击效果",
+        },
+        { name: "实现动画文本轨迹效果", folder: "实现动画文本轨迹效果" },
+        { name: "密码强度检查器", folder: "密码强度检查器" },
+        { name: "彩色发光液体碗动画效果", folder: "彩色发光液体碗动画效果" },
+        { name: "情人节贺卡", folder: "情人节贺卡" },
+        { name: "旋转相册3D", folder: "旋转相册3D" },
+        { name: "构建便签应用初学者项目", folder: "构建便签应用初学者项目" },
+        { name: "模拟与数字时钟设计", folder: "模拟与数字时钟设计" },
+        {
+          name: "用JavaScript创建游戏-图片拼图",
+          folder: "用JavaScript创建游戏-图片拼图",
+        },
+        { name: "登录表单7", folder: "登录表单7" },
+        { name: "精美的花朵儿", folder: "精美的花朵儿" },
+        { name: "纯css3D动画", folder: "纯css3D动画" },
+        { name: "网站的滚动效果", folder: "网站的滚动效果" },
+        { name: "行走的人", folder: "行走的人" },
+        { name: "边框动画效果-Love", folder: "边框动画效果-Love" },
+        {
+          name: "鼠标移动时的酷炫光标动画",
+          folder: "鼠标移动时的酷炫光标动画",
+        },
+      ];
+
+      // 生成项目卡片
+      const projectGrid = document.getElementById("projectGrid");
+      const searchInput = document.getElementById("searchInput");
+      const searchResultCount = document.getElementById("searchResultCount");
+      const prevPageBtn = document.getElementById("prevPage");
+      const nextPageBtn = document.getElementById("nextPage");
+      const pageInfo = document.getElementById("pageInfo");
+
+      // 分页相关变量
+      let currentPage = 1;
+      let itemsPerPage = 12;
+      let currentFilteredProjects = [];
+      let totalPages = 1;
+
+      // 渲染项目列表函数（支持分页）
+      function renderProjects(filteredProjects, page = 1) {
+        // 保存当前过滤后的项目
+        currentFilteredProjects = filteredProjects;
+
+        // 计算总页数
+        totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
+        currentPage = Math.min(Math.max(1, page), totalPages);
+
+        // 更新结果计数
+        searchResultCount.textContent = `找到 ${filteredProjects.length} 个项目`;
+
+        // 计算当前页显示的项目
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const currentPageProjects = filteredProjects.slice(
+          startIndex,
+          endIndex
+        );
+
+        // 清空现有卡片
+        projectGrid.innerHTML = "";
+
+        // 渲染当前页的项目
+        currentPageProjects.forEach((project, index) => {
+          // 创建卡片元素
+          const card = document.createElement("div");
+          card.className =
+            "bg-white rounded-lg shadow-md overflow-hidden card-hover";
+
+          // 根据项目类型分配对应的图标，以20个为一组循环
+          const icons = [
+            "fa-cube", // 3D相关项目
+            "fa-tint", // 液体/水滴相关
+            "fa-font", // 文本效果相关
+            "fa-th", // 像素/网格相关
+            "fa-area-chart", // 波浪/图表相关
+            "fa-bomb", // 爆炸/动态效果
+            "fa-film", // 动画相关
+            "fa-magic", // 粒子/魔法效果
+            "fa-window-maximize", // 玻璃态/窗口相关
+            "fa-code", // 代码实现相关
+            "fa-align-center", // 文本输入/对齐相关
+            "fa-html5", // HTML相关
+            "fa-css3", // CSS效果相关
+            "fa-circle-o-notch", // 旋转/加载效果
+            "fa-hand-pointer-o", // 交互/悬停效果
+          ];
+
+          const icon = icons[index % icons.length];
+
+          // 设置卡片内容
+          card.innerHTML = `
+        <div class="h-3 bg-gradient-to-r ${
+          index % 3 === 0
+            ? "from-primary"
+            : index % 3 === 1
+            ? "from-secondary"
+            : "from-purple-500"
+        }"></div>
+        <div class="p-5">
+          <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center mb-4 text-xl text-primary">
+            <i class="fa ${icon}"></i>
+          </div>
+          <h3 class="font-semibold text-lg mb-2 line-clamp-1">${
+            project.name
+          }</h3>
+          <p class="text-gray-500 text-sm mb-4 cursor-pointer hover:text-primary transition-colors" onclick="openSourceCodeModal('${
+            project.folder
+          }')">查看源代码</p>
+          <a href="${
+            project.folder
+          }/index.html" target="_blank" class="inline-flex items-center text-primary hover:text-primary/80 font-medium text-sm transition-colors">
+            查看效果 <i class="fas fa-arrow-right ml-1"></i>
+          </a>
+        </div>
+      `;
+
+          projectGrid.appendChild(card);
+        });
+      }
+
+      // 添加主题CSS样式
+      const themeStyle = document.createElement("style");
+      themeStyle.textContent = `
+      .scrollbar-thin {
+        scrollbar-width: thin;
+      }
+      .scrollbar-thumb-gray-300::-webkit-scrollbar-thumb {
+        background-color: #d1d5db;
+        border-radius: 9999px;
+      }
+      .scrollbar-track-transparent::-webkit-scrollbar-track {
+        background-color: transparent;
+      }
+      .scrollbar-thin::-webkit-scrollbar {
+        width: 6px;
+      }
+    `;
+      document.head.appendChild(themeStyle);
+
+      // 更新分页按钮状态
+      function updatePaginationButtons() {
+        prevPageBtn.disabled = currentPage <= 1;
+        nextPageBtn.disabled = currentPage >= totalPages;
+        pageInfo.textContent = `第 ${currentPage} 页，共 ${totalPages} 页`;
+      }
+
+      // 初始渲染所有项目
+      renderProjects(projects, 1);
+      updatePaginationButtons();
+
+      // 搜索功能实现
+      searchInput.addEventListener("input", function () {
+        const searchTerm = this.value.toLowerCase().trim();
+
+        if (searchTerm === "") {
+          // 如果搜索框为空，显示所有项目
+          renderProjects(projects, 1);
+        } else {
+          // 过滤项目
+          const filteredProjects = projects.filter((project) =>
+            project.name.toLowerCase().includes(searchTerm)
+          );
+          renderProjects(filteredProjects, 1);
+        }
+        updatePaginationButtons();
+
+        // 滚动到容器顶部
+        document.getElementById("projectsContainer").scrollTop = 0;
+      });
+
+      // 上一页按钮事件
+      prevPageBtn.addEventListener("click", function () {
+        if (currentPage > 1) {
+          renderProjects(currentFilteredProjects, currentPage - 1);
+          updatePaginationButtons();
+          // 滚动到容器顶部
+          document.getElementById("projectsContainer").scrollTop = 0;
+        }
+      });
+
+      // 下一页按钮事件
+      nextPageBtn.addEventListener("click", function () {
+        if (currentPage < totalPages) {
+          renderProjects(currentFilteredProjects, currentPage + 1);
+          updatePaginationButtons();
+          // 滚动到容器顶部
+          document.getElementById("projectsContainer").scrollTop = 0;
+        }
+      });
+
+      // 添加页面滚动动画
+      document.addEventListener("DOMContentLoaded", () => {
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute("href")).scrollIntoView({
+              behavior: "smooth",
+            });
+          });
+        });
+      });
+
+      // 源代码查看弹窗功能
+      function openSourceCodeModal(folderPath) {
+        const modal = document.getElementById("sourceCodeModal");
+        const modalTitle = document.getElementById("modalTitle");
+        const htmlCode = document.getElementById("htmlCode");
+        const cssCode = document.getElementById("cssCode");
+        const loadingIndicator = document.getElementById("loadingIndicator");
+
+        // 设置弹窗标题
+        modalTitle.textContent = folderPath + " 源代码";
+
+        // 显示加载状态
+        loadingIndicator.classList.remove("hidden");
+        htmlCode.textContent = "加载中...";
+        cssCode.textContent = "加载中...";
+
+        // 显示弹窗
+        modal.classList.remove("hidden");
+
+        // 获取并显示index.html内容
+        fetch(folderPath + "/index.html")
+          .then((response) => response.text())
+          .then((text) => {
+            htmlCode.textContent = text;
+          })
+          .catch((error) => {
+            htmlCode.textContent = "无法加载index.html文件: " + error.message;
+          });
+
+        // 获取并显示style.css内容
+        fetch(folderPath + "/style.css")
+          .then((response) => response.text())
+          .then((text) => {
+            cssCode.textContent = text;
+          })
+          .catch(() => {
+            // 如果style.css不存在，尝试加载index.css
+            return fetch(folderPath + "/index.css")
+              .then((response) => response.text())
+              .then((text) => {
+                cssCode.textContent = text;
+              })
+              .catch((error) => {
+                cssCode.textContent = "无法加载CSS文件: " + error.message;
+              });
+          })
+          .finally(() => {
+            // 隐藏加载状态
+            loadingIndicator.classList.add("hidden");
+          });
+      }
+
+      // 关闭弹窗
+      function closeSourceCodeModal() {
+        document.getElementById("sourceCodeModal").classList.add("hidden");
+      }
+
+      // 点击遮罩层关闭弹窗
+      document.addEventListener("DOMContentLoaded", () => {
+        const modal = document.getElementById("sourceCodeModal");
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) {
+            closeSourceCodeModal();
+          }
+        });
+      });
+    </script>
+
+    <!-- 源代码查看弹窗 -->
+    <div
+      id="sourceCodeModal"
+      class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center"
+    >
+      <div
+        class="bg-white rounded-lg shadow-2xl w-full max-w-6xl max-h-[90vh] flex flex-col"
+      >
+        <!-- 弹窗头部 -->
+        <div class="flex justify-between items-center p-4 border-b">
+          <h2 id="modalTitle" class="text-lg font-semibold">源代码查看</h2>
+          <button
+            onclick="closeSourceCodeModal()"
+            class="text-gray-500 hover:text-gray-700"
+          >
+            <i class="fas fa-times text-xl"></i>
+          </button>
+        </div>
+
+        <!-- 加载指示器 -->
+        <div
+          id="loadingIndicator"
+          class="hidden flex justify-center items-center py-8"
+        >
+          <div
+            class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"
+          ></div>
+        </div>
+
+        <!-- 代码显示区域 -->
+        <div class="flex flex-1 overflow-hidden">
+          <!-- HTML代码区域 -->
+          <div class="w-1/2 border-r overflow-auto">
+            <div class="bg-gray-50 p-2 border-b">
+              <span class="text-sm font-medium">index.html</span>
+            </div>
+            <pre
+              class="p-4 overflow-auto"
+              style="
+                height: calc(90vh - 100px);
+                font-family: monospace;
+                font-size: 14px;
+                white-space: pre-wrap;
+              "
+            >
+            <code id="htmlCode"></code>
+          </pre>
+          </div>
+
+          <!-- CSS代码区域 -->
+          <div class="w-1/2 overflow-auto">
+            <div class="bg-gray-50 p-2 border-b">
+              <span class="text-sm font-medium">style.css</span>
+            </div>
+            <pre
+              class="p-4 overflow-auto"
+              style="
+                height: calc(90vh - 100px);
+                font-family: monospace;
+                font-size: 14px;
+                white-space: pre-wrap;
+              "
+            >
+            <code id="cssCode"></code>
+          </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 打赏模态框 -->
+    <div
+      id="donateModal"
+      class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4"
+    >
+      <div
+        class="bg-white rounded-xl max-w-md w-full max-h-[90vh] overflow-auto"
+      >
+        <!-- 模态框头部 -->
+        <div class="relative p-6 border-b">
+          <h3 class="text-xl font-bold text-center">支持作者</h3>
+          <button
+            id="closeDonateModal"
+            class="absolute right-4 top-4 text-gray-500 hover:text-gray-700"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <!-- 打赏选项 -->
+        <div class="p-6">
+          <p class="text-center text-gray-600 mb-6">
+            如果您觉得这个项目有帮助，欢迎打赏支持！
+          </p>
+
+          <!-- 支付方式选择 -->
+          <div class="flex justify-center space-x-8 mb-8">
+            <button class="donate-option active" data-type="wechat">
+              <div
+                class="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mb-2 mx-auto"
+              >
+                <i class="fab fa-weixin text-green-500 text-3xl"></i>
+              </div>
+              <span class="text-sm">微信支付</span>
+            </button>
+            <button class="donate-option" data-type="alipay">
+              <div
+                class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-2 mx-auto"
+              >
+                <i class="fab fa-alipay text-blue-500 text-3xl"></i>
+              </div>
+              <span class="text-sm">支付宝</span>
+            </button>
+          </div>
+
+          <!-- 二维码展示区域 -->
+          <div class="donate-qrcode flex justify-center mb-6">
+            <div id="wechatQR" class="qrcode-container">
+              <img
+                src="wx.jpg"
+                alt="微信打赏二维码"
+                class="w-48 h-48 object-contain"
+              />
+            </div>
+            <div id="alipayQR" class="qrcode-container hidden">
+              <img
+                src="zfb.jpg"
+                alt="支付宝打赏二维码"
+                class="w-48 h-48 object-contain"
+              />
+            </div>
+          </div>
+
+          <!-- 提示信息 -->
+          <div class="text-center text-gray-500 text-sm">
+            <p>扫描上方二维码进行打赏</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // 打赏功能相关代码
+      const donateModal = document.getElementById("donateModal");
+      const donateButton = document.getElementById("donateButton");
+      const donateButtonMobile = document.getElementById("donateButtonMobile");
+      const closeDonateModal = document.getElementById("closeDonateModal");
+      const donateOptions = document.querySelectorAll(".donate-option");
+      const wechatQR = document.getElementById("wechatQR");
+      const alipayQR = document.getElementById("alipayQR");
+
+      // 打开打赏模态框
+      function openDonateModal() {
+        donateModal.classList.remove("hidden");
+        document.body.style.overflow = "hidden"; // 禁止背景滚动
+      }
+
+      // 关闭打赏模态框
+      function closeDonateModalFunc() {
+        donateModal.classList.add("hidden");
+        document.body.style.overflow = ""; // 恢复背景滚动
+      }
+
+      // 切换支付方式
+      function switchPaymentType(type) {
+        // 移除所有选项的激活状态
+        donateOptions.forEach((option) => {
+          option.classList.remove("active");
+          option
+            .querySelector("div")
+            .classList.remove("ring-2", "ring-primary");
+        });
+
+        // 添加当前选项的激活状态
+        const activeOption = document.querySelector(
+          `.donate-option[data-type="${type}"]`
+        );
+        activeOption.classList.add("active");
+        activeOption
+          .querySelector("div")
+          .classList.add("ring-2", "ring-primary");
+
+        // 显示对应的二维码
+        if (type === "wechat") {
+          wechatQR.classList.remove("hidden");
+          alipayQR.classList.add("hidden");
+        } else if (type === "alipay") {
+          wechatQR.classList.add("hidden");
+          alipayQR.classList.remove("hidden");
+        }
+      }
+
+      // 事件监听
+      donateButton.addEventListener("click", openDonateModal);
+      donateButtonMobile.addEventListener("click", openDonateModal);
+      closeDonateModal.addEventListener("click", closeDonateModalFunc);
+
+      // 点击模态框背景关闭
+      donateModal.addEventListener("click", (e) => {
+        if (e.target === donateModal) {
+          closeDonateModalFunc();
+        }
+      });
+
+      // 切换支付方式
+      donateOptions.forEach((option) => {
+        option.addEventListener("click", () => {
+          switchPaymentType(option.dataset.type);
+        });
+      });
+
+      // 初始化默认选中微信支付
+      switchPaymentType("wechat");
+
+      // 添加ESC键关闭模态框
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !donateModal.classList.contains("hidden")) {
+          closeDonateModalFunc();
+        }
+      });
+    </script>
+
+    <!-- 语言和主题切换功能 -->
+    <script>
+      // 语言切换功能
+      const languageToggle = document.getElementById("languageToggle");
+      const languageToggleMobile = document.getElementById(
+        "languageToggleMobile"
+      );
+      const languageText = document.getElementById("languageText");
+      let currentLanguage = localStorage.getItem("language") || "zh";
+
+      // 定义中英文文本映射
+      const translations = {
+        zh: {
+          pageTitle: "前端效果集合",
+          overview: "项目总览",
+          overviewDesc: "各种前端效果演示项目，点击卡片即可查看对应效果",
+          donate: "打赏",
+          languageBtn: "English",
+          themeBtn: "暗黑",
+          prevPage: "上一页",
+          nextPage: "下一页",
+          pageInfo: "页",
+        },
+        en: {
+          pageTitle: "Frontend Effects Collection",
+          overview: "Project Overview",
+          overviewDesc:
+            "Various frontend effect demonstration projects, click on the card to view the corresponding effect",
+          donate: "Donate",
+          languageBtn: "中文",
+          themeBtn: "Dark",
+          prevPage: "Previous",
+          nextPage: "Next",
+          pageInfo: "Page",
+        },
+      };
+
+      // 应用语言
+      function applyLanguage(lang) {
+        document.querySelector("h1").textContent = translations[lang].pageTitle;
+        document.querySelector("h2").textContent = translations[lang].overview;
+        document.querySelector(".text-gray-600").textContent =
+          translations[lang].overviewDesc;
+        document.querySelectorAll("#donateButton span").forEach((el) => {
+          el.textContent = translations[lang].donate;
+        });
+        if (languageText)
+          languageText.textContent = translations[lang].languageBtn;
+        if (themeText) themeText.textContent = translations[lang].themeBtn;
+
+        // 更新分页按钮文本
+        const prevBtn = document.getElementById("prevPage");
+        const nextBtn = document.getElementById("nextPage");
+        const pageInfo = document.getElementById("pageInfo");
+        if (prevBtn) prevBtn.textContent = translations[lang].prevPage;
+        if (nextBtn) nextBtn.textContent = translations[lang].nextPage;
+        if (pageInfo) pageInfo.textContent = translations[lang].pageInfo;
+
+        localStorage.setItem("language", lang);
+      }
+
+      // 语言切换事件
+      function toggleLanguage() {
+        const newLang = currentLanguage === "zh" ? "en" : "zh";
+        applyLanguage(newLang);
+        currentLanguage = newLang;
+        // 更新主题文本
+        updateThemeText();
+      }
+
+      if (languageToggle)
+        languageToggle.addEventListener("click", toggleLanguage);
+      if (languageToggleMobile)
+        languageToggleMobile.addEventListener("click", toggleLanguage);
+
+      // 主题切换功能
+      const themeToggle = document.getElementById("themeToggle");
+      const themeToggleMobile = document.getElementById("themeToggleMobile");
+      const themeText = document.getElementById("themeText");
+      const body = document.body;
+
+      // 主题类型
+      const themes = ["light", "dark", "system"];
+      let currentThemeIndex = parseInt(
+        localStorage.getItem("themeIndex") || "0"
+      );
+
+      // 更新主题显示文本
+      function updateThemeText() {
+        const themeTexts =
+          currentLanguage === "zh"
+            ? ["明亮", "暗黑", "跟随系统"]
+            : ["Light", "Dark", "System"];
+        if (themeText) themeText.textContent = themeTexts[currentThemeIndex];
+      }
+
+      // 应用主题
+      function applyTheme() {
+        const theme = themes[currentThemeIndex];
+
+        // 移除所有主题类
+        body.classList.remove("theme-light", "theme-dark");
+
+        if (theme === "system") {
+          // 跟随系统
+          if (
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches
+          ) {
+            body.classList.add("theme-dark");
+          } else {
+            body.classList.add("theme-light");
+          }
+        } else {
+          body.classList.add(`theme-${theme}`);
+        }
+
+        // 更新图标
+        const icon =
+          theme === "light" ||
+          (theme === "system" &&
+            !window.matchMedia("(prefers-color-scheme: dark)").matches)
+            ? "fa-sun"
+            : "fa-moon";
+        const otherIcon = icon === "fa-sun" ? "fa-moon" : "fa-sun";
+
+        if (themeToggle) {
+          themeToggle.querySelector("i").classList.remove(otherIcon);
+          themeToggle.querySelector("i").classList.add(icon);
+        }
+        if (themeToggleMobile) {
+          themeToggleMobile.querySelector("i").classList.remove(otherIcon);
+          themeToggleMobile.querySelector("i").classList.add(icon);
+        }
+
+        updateThemeText();
+        localStorage.setItem("themeIndex", currentThemeIndex);
+      }
+
+      // 主题切换事件
+      function toggleTheme() {
+        currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+        applyTheme();
+      }
+
+      if (themeToggle) themeToggle.addEventListener("click", toggleTheme);
+      if (themeToggleMobile)
+        themeToggleMobile.addEventListener("click", toggleTheme);
+
+      // 监听系统主题变化
+      if (window.matchMedia) {
+        window
+          .matchMedia("(prefers-color-scheme: dark)")
+          .addEventListener("change", () => {
+            if (themes[currentThemeIndex] === "system") {
+              applyTheme();
+            }
+          });
+      }
+
+      // 初始化
+      applyLanguage(currentLanguage);
+      applyTheme();
+
+      // 直接在页面初始化时添加主题样式
+      (function () {
+        const styleElement = document.createElement("style");
+        styleElement.textContent = `
+        body {
+          transition: background-color 0.3s, color 0.3s;
+        }
+        
+        /* 明亮主题 */
+        .theme-light {
+          background-color: #f9fafb;
+          color: #333;
+        }
+        
+        .theme-light header {
+          background-color: rgba(255, 255, 255, 0.8);
+          color: #333;
+        }
+        
+        .theme-light .card {
+          background-color: white;
+          color: #333;
+          border: 1px solid #e5e7eb;
+        }
+        
+        .theme-light .text-gray-600 {
+          color: #6b7280;
+        }
+        
+        /* 暗黑主题 */
+        .theme-dark {
+          background-color: #121212;
+          color: #f3f4f6;
+        }
+        
+        .theme-dark header {
+          background-color: rgba(31, 41, 55, 0.8);
+          color: #f3f4f6;
+        }
+        
+        .theme-dark .card {
+          background-color: #1f2937;
+          color: #f3f4f6;
+          border: 1px solid #374151;
+        }
+        
+        .theme-dark .text-gray-600 {
+          color: #d1d5db;
+        }
+        
+        /* 按钮样式调整 */
+        .space-x-4 > button {
+          padding: 0.5rem;
+          border-radius: 0.375rem;
+          transition: all 0.2s;
+        }
+        
+        .space-x-4 > button:hover {
+          background-color: rgba(0, 0, 0, 0.05);
+        }
+        
+        .theme-dark .space-x-4 > button:hover {
+          background-color: rgba(255, 255, 255, 0.05);
+        }
+      `;
+        document.head.appendChild(styleElement);
+      })();
+    </script>
+  </body>
+</html>
