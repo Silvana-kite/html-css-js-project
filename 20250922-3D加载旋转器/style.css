@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #bdcbdb;
+}
+.loader{
+    position: relative;
+    width: 300px;
+    height: 300px;
+    background: #c9d5e0;
+    border-radius: 50px;
+    box-shadow: 30px 30px 30px -10px rgba(0,0,0,0.15),
+    inset 15px 15px 10px rgba(255,255,255,0.75),
+    -15px -15px 35px rgba(255,255,255,0.55),
+    inset -1px -1px 10px rgba(0,0,0,0.2);
+}
+.circle{
+    position: absolute;
+    inset: 35px;
+    background: #acbaca;
+    border-radius: 50%;
+    box-shadow: 5px 5px 15px #152b4a66,
+    inset 5px 5px 5px rgba(255,255,255,0.55),
+    -6px -6px 10px rgba(255,255,255,1);
+}
+.circle::before{
+    content: '';
+    position: absolute;
+    inset: 4px;
+    background: linear-gradient(#2196f3,#e91e63);
+    border-radius: 50%;
+    animation: animate 2s linear infinite;
+}
+.circle::after{
+    content: '';
+    position: absolute;
+    inset: 35px;
+    background: #acbaca;
+    border-radius: 50%;
+}
+
+@keyframes animate{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+.circle span{
+    position: absolute;
+    inset: 4px;
+    background: linear-gradient(#2196f3,#e91e63);
+    border-radius: 50%;
+    animation: animate 2s linear infinite;
+    filter: blur(20px);
+    z-index: 1000;
+    mix-blend-mode: plus-lighter;
+}
+.circle span::before{
+    content: '';
+    position: absolute;
+    inset: 40px;
+    background: #bdcbdb;
+    border-radius: 50%;
+    animation: animate 2s linear infinite;
+}

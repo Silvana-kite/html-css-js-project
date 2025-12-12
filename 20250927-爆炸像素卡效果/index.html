@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爆炸像素卡效果</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="cards" style="--clr:#ff5722">
+        <div class="pixel-container"></div>
+        <h2>01</h2>
+        <div class="content">
+            <h3>春日感怀</h3>
+            <p>东风拂柳意悠悠，桃李争妍映画楼。蝶舞翩跹寻艳影，莺啼婉转绕芳洲。时光易逝空嗟叹，壮志难酬独倚愁。且借春光添逸兴，诗心一片付东流</p>
+            <a href="#">Read More</a>
+        </div>
+    </div>
+    
+    <div class="cards" style="--clr:#03a9f4">
+        <div class="pixel-container"></div>
+        <h2>02</h2>
+        <div class="content">
+            <h3>秋山行</h3>
+            <p>秋山寂寂入幽遐，霜染枫林似锦霞。怪石嶙峋依曲径，寒溪澄澈绕蒹葭。遥闻古寺钟声远，近见归巢倦鸟斜。心醉此中尘念息，愿随落日卧烟沙 。</p>
+            <a href="#">Read More</a>
+        </div>
+    </div>
+
+    <script>
+        let cards = document.querySelectorAll('.cards');
+        cards.forEach(card => {
+            let pixelContainer = card.querySelector('.pixel-container');
+            let pixSize = 20;
+            let cardWidth = card.offsetWidth;
+            let cardHeight = card.offsetHeight;
+
+            let cols = Math.floor(cardWidth / pixSize);
+            let rows = Math.floor(cardHeight / pixSize);
+
+            for(let row = 0;row<rows;row++){
+                for(let col = 0;col<cols;col++){
+                    let pixel = document.createElement('div');
+                    pixel.classList.add('pixel');
+                    pixel.style.left = `${col * pixSize}px`;
+                    pixel.style.top = `${row * pixSize}px`;
+
+                    let tx = (Math.random() - 0.5) * 100;
+                    let ty = (Math.random() - 0.5) * 100;
+
+
+                    let delay = Math.random() * 0.5;
+                    pixel.style.transitionDelay = `${delay}s`;
+
+                    pixel.style.setProperty('--tx', `${tx}px`);
+                    pixel.style.setProperty('--ty', `${ty}px`);
+                    pixelContainer.appendChild(pixel);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

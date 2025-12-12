@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js和css实现像素按钮效果</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <button class="pixel-btn">
+        <span>Hover Me</span>
+        <div class="pixel-container" style="--clr:#ff5722"></div>
+    </button>
+    <button class="pixel-btn">
+        <span>Hover Me</span>
+        <div class="pixel-container" style="--clr:#03a9f4"></div>
+    </button>
+
+    <script>
+        let buttons = document.querySelectorAll('.pixel-btn');
+        buttons.forEach(card => {
+            let pixelContainer = card.querySelector('.pixel-container');
+            let pixSize = 10;
+            let btnWidth = card.offsetWidth;
+            let btnHeight = card.offsetHeight;
+
+            let cols = Math.floor(btnWidth / pixSize);
+            let rows = Math.floor(btnHeight / pixSize);
+
+            for(let row = 0;row<rows;row++){
+                for(let col = 0;col<cols;col++){
+                    let pixel = document.createElement('div');
+                    pixel.classList.add('pixel');
+                    pixel.style.left = `${col * pixSize}px`;
+                    pixel.style.top = `${row * pixSize}px`;
+
+                    let tx = (Math.random() - 0.5) * 100;
+                    let ty = (Math.random() - 0.5) * 100;
+
+
+                    let delay = Math.random() * 0.5;
+                    pixel.style.transitionDelay = `${delay}s`;
+
+                    pixel.style.setProperty('--tx', `${tx}px`);
+                    pixel.style.setProperty('--ty', `${ty}px`);
+                    pixelContainer.appendChild(pixel);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

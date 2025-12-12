@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>鼠标移入移出效果</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="box"></div>
+      <div class="box"></div>
+    </div>
+    <script>
+      let box = document.querySelectorAll(".box");
+      box.forEach((item) => {
+        item.onmousemove = function (e) {
+          let x = e.pageX - item.offsetLeft;
+          let y = e.pageY - item.offsetTop;
+
+          item.style.setProperty("--x", x + "px");
+          item.style.setProperty("--y", y + "px");
+        };
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>如何用 HTML、CSS 和 JS 创建待办事项列表应用程序 | JavaScript 项目</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h2>To Do List</h2>
+            <input type="text" placeholder="Write here..." id="inputBox">
+            <ul id="list"></ul>
+        </div>
+    </div>
+
+    <script>
+        let inputBox = document.querySelector('#inputBox');
+        let list = document.querySelector('#list');
+
+        inputBox.addEventListener("keyup", function(event) {
+            if(event.key == 'Enter') {
+                addItem(this.value)
+                this.value = "";
+            }
+        })
+
+        let addItem = (inputBox) => {
+            let listItem = document.createElement('li');
+            listItem.innerHTML = `${inputBox}<i></i>`
+
+            listItem.addEventListener('click', function() {
+                this.classList.toggle('done');
+            })
+
+            listItem.querySelector("i").addEventListener("click", function(){
+                listItem.remove();
+            })
+            list.appendChild(listItem);
+        }
+    </script>
+</body>
+</html>

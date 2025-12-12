@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用普通 Javascript 的水平页面滚动</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <section style="--clr: #dad4ff;">
+            <div class="content">
+                <h2>Section One</h2>
+            </div>
+        </section>
+        <section style="--clr: #fffd92;">
+            <div class="content">
+                <h2>Section Two</h2>
+            </div>
+        </section>
+        <section style="--clr: #ffe2eb;">
+            <div class="content">
+                <h2>Section Three</h2>
+            </div>
+        </section>
+        <section style="--clr: #cfffca;">
+            <div class="content">
+                <h2>Section Four</h2>
+            </div>
+        </section>
+        <section style="--clr: #dafff6;">
+            <div class="content">
+                <h2>Section Five</h2>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        window.addEventListener('scroll', function(){
+            let scrollY = window.scrollY;
+            let totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+            let percentScrolled = (scrollY / totalHeight) * 100;
+            let translateX = (percentScrolled / 5) * -4;
+            document.querySelector('.container').style.transform = `translateX(${translateX}%)`;
+        })
+    </script>
+</body>
+</html>

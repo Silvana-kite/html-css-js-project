@@ -1,0 +1,41 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #0c2935;
+}
+h2{
+  color: rgba(0,0,0,0.2);
+  font-size: 12vw;
+  pointer-events: none;
+  user-select: none;
+}
+.pulse {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  border: 2px solid #03a9f4;
+  border-radius: 50%;
+  z-index: 10000;
+  animation: animate 1s linear infinite;
+}
+@keyframes animate {
+  0%{
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+  }
+}

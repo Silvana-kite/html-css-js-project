@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用原生JavaScript通过动画实现页面滚动时元素的显示效果</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section>
+        <h2>Scroll To Reveal</h2>
+    </section>
+    <div class="container"></div>
+
+    <script>
+        for (let i =1; i<=60;i++) {
+            let box = document.createElement('div');
+            box.classList.add('box');
+            document.querySelector('.container').appendChild(box)
+        }
+
+        let randomColorBlock = document.querySelectorAll('.box');
+
+        function addColor() {
+            randomColorBlock.forEach(e => {
+                e.style.background = randomColor()
+            })
+        }
+
+        function randomColor() {
+            let chars = '1234567890abcdef';
+            let colorLength = 6;
+            let color = "";
+
+            for (let i = 1; i<=colorLength;i++){
+                let randomColors = Math.floor(Math.random() * chars.length);
+                color+=chars.substring(randomColors, randomColors+1);
+            }
+            return `#${color}`
+        }
+
+        addColor()
+
+        let boxes = document.querySelectorAll('.box');
+        function scrollTrigger(){
+            boxes.forEach(boxxx => {
+                if(boxxx.offsetTop < window.scrollY) {
+                    boxxx.classList.add('active')
+                } else {
+                    boxxx.classList.remove('active')
+                }
+            })
+        }
+        window.addEventListener('scroll',scrollTrigger)
+    </script>
+</body>
+</html>

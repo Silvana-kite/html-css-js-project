@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用 Javascript 滚动页面上的活动链接</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">logo</a>
+        <nav>
+            <a href="#home" style="--clr: #ff4d4d;" class="active">Home</a>
+            <a href="#about" style="--clr: #c56cf0;">About</a>
+            <a href="#services" style="--clr: #ffeaa7;">Services</a>
+            <a href="#profolio" style="--clr: #17c0eb;">Profolio</a>
+            <a href="#contact" style="--clr: #fd79a8;">Contact</a>
+        </nav>
+    </header>
+    <section id="home" style="--clr: #ff4d4d;">Home</section>
+    <section id="about" style="--clr: #c56cf0;">About</section>
+    <section id="services" style="--clr: #ffeaa7;">Services</section>
+    <section id="profolio" style="--clr: #17c0eb;">Profolio</section>
+    <section id="contact" style="--clr: #fd79a8;">Contact</section>
+
+    <script>
+        let sec = document.querySelectorAll('section');
+        let links = document.querySelectorAll('nav a');
+
+        window.onscroll = () => {
+            sec.forEach(section => {
+                let top = window.scrollY;
+                let offset = section.offsetTop - 60;
+                let height = section.offsetHeight;
+                let id = section.getAttribute('id');
+
+                if(top >= offset && top < offset + height) {
+                    links.forEach(link => {
+                        link.classList.remove('active');
+                        document.querySelector(`nav a[href*=${id}]`).classList.add('active');
+                    })
+                }
+            })
+        }
+    </script>
+</body>
+</html>

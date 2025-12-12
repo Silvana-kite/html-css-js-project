@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D玻璃形态卡片悬停效果</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="imgBx">
+          <img src="img1.png" />
+        </div>
+        <div class="content">
+          <h2>Card One</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil quas
+            reprehenderit porro in, accusantium unde, blanditiis soluta dolorum
+            tempora eum ab voluptates? Nihil possimus facere deserunt aliquam
+            magnam explicabo. Ut.
+          </p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="imgBx">
+          <img src="img2.png" />
+        </div>
+        <div class="content">
+          <h2>Card Two</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil quas
+            reprehenderit porro in, accusantium unde, blanditiis soluta dolorum
+            tempora eum ab voluptates? Nihil possimus facere deserunt aliquam
+            magnam explicabo. Ut.
+          </p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="imgBx">
+          <img src="img3.png" />
+        </div>
+        <div class="content">
+          <h2>Card Three</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil quas
+            reprehenderit porro in, accusantium unde, blanditiis soluta dolorum
+            tempora eum ab voluptates? Nihil possimus facere deserunt aliquam
+            magnam explicabo. Ut.
+          </p>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="vanilla-tilt.js"></script>
+    <script type="text/javascript">
+      VanillaTilt.init(document.querySelectorAll(".card"), {
+        max: 25,
+        speed: 400,
+        glare: true,
+        "max-glare": 1,
+      });
+    </script>
+  </body>
+</html>

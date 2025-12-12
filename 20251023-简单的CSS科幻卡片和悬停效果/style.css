@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #000815;
+}
+.container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 150px;
+  flex-wrap: wrap;
+}
+.container .box {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 240px;
+  height: 320px;
+  background: var(--clr);
+  box-shadow: 0 0 15px #0009, 0 25px 55px var(--clr);
+}
+.container .box h2 {
+  position: relative;
+  color: #020d1e;
+  font-size: 4em;
+  text-align: center;
+  line-height: 2.5em;
+  transform: scale(0);
+  transition: 0.5s;
+  transition-delay: 0s;
+  filter: blur(10px);
+}
+.container .box h2 small {
+  font-size: 0.35em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.container .box:hover h2 {
+  transform: scale(1);
+  transition-delay: 0.5s;
+  filter: blur(0);
+}
+.container .box ion-icon {
+  position: absolute;
+  font-size: 4em;
+  transition: 0.5s;
+  transition-delay: 0s;
+  opacity: 0;
+  transform: translateY(100px);
+}
+.container .box:hover ion-icon {
+  transform: translateY(0);
+  transition-delay: 1s;
+  opacity: 1;
+}
+.container .box .clip {
+  position: absolute;
+  inset: 20px;
+  box-shadow: 0 0 0 18px #020d1e;
+}
+.container .box .clip span {
+  position: absolute;
+  inset: 0;
+  background: #020d1e;
+  transition: 0.25s;
+}
+.container .box .clip span:nth-child(1) {
+  clip-path: polygon(0 0, 50% 40%, 100% 0);
+  transition-delay: 0s;
+}
+.container .box:hover .clip span:nth-child(1) {
+  clip-path: polygon(0 0, 50% 0%, 100% 0);
+}
+.container .box .clip span:nth-child(2) {
+  clip-path: polygon(0 0, 40% 50%, 50% 100%, 0% 100%);
+  transition-delay: 0.25s;
+}
+.container .box:hover .clip span:nth-child(2) {
+  clip-path: polygon(0 0, 0% 100%, 50% 100%, 0% 100%);
+}
+.container .box .clip span:nth-child(3) {
+  clip-path: polygon(60% 50%, 100% 0, 100% 100%, 50% 100%);
+  transition-delay: 0.5s;
+}
+.container .box:hover .clip span:nth-child(3) {
+  clip-path: polygon(100% 100%, 100% 0, 100% 100%, 50% 100%);
+}

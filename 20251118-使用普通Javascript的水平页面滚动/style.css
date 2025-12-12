@@ -1,0 +1,35 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  min-height: 400vh;
+}
+.container{
+  position: fixed;
+  display: flex;
+  width: 500%;
+  height: 100vh;
+  transition: 0.5s ease-out;
+}
+section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: var(--clr);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid #333;
+}
+.content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content h2{
+  font-size: 4em;
+  color: #333;
+}

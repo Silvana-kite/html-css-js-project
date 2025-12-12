@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>制作自定义发光鼠标光标</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="cursor"></div>
+    <script>
+      let cursor = document.getElementById("cursor");
+      let body = document.querySelector('body');
+      document.addEventListener('mousemove', (e) => {
+        body.style.backgroundPositionX = e.pageX/-4 + 'px';
+        body.style.backgroundPositionY = e.pageY/-4 + 'px';
+        cursor.style.left = e.pageX + 'px';
+        cursor.style.top = e.pageY + 'px';
+      });
+    </script>
+  </body>
+</html>

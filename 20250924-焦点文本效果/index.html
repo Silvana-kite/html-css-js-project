@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>焦点文本效果</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <section>
+        <div class="box">
+            <h2>Focus</h2>
+        </div>
+        <div class="box box2">
+            <h2>Focus</h2>
+        </div>
+        <div class="circle"></div>
+    </section>
+
+    <script>
+        let pos = document.documentElement;
+        pos.addEventListener("mousemove", e=>{
+            pos.style.setProperty('--x', e.clientX + 'px');
+            pos.style.setProperty('--y', e.clientY + 'px');
+        })
+    </script>
+</body>
+</html>

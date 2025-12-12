@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg,#fff,#eff0f4);
+}
+.drop{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    box-shadow: inset 15px 15px 20px rgba(0,0,0,0.05),
+    10px 15px 20px rgba(0,0,0,0.1),
+    inset -15px -15px 20px rgba(255,255,255,1)
+}
+.drop::before{
+    content: '';
+    position: absolute;
+    inset: 15px;
+    box-shadow: inset 10px 10px 10px #fff;
+    border-radius: 50%;
+    filter: blur(5px);
+}

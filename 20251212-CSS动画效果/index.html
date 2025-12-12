@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20251210-使用CSS与JavaScript实现点击脉冲效果</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h2>Pulse on Click</h2>
+    <script>
+        document.addEventListener('click', function() {
+            let i = document.createElement('i');
+            i.setAttribute('class', 'pulse');
+            document.body.appendChild(i);
+            i.style.top = event.pageY + 'px';
+            i.style.left = event.pageX + 'px';
+
+            setTimeout(function() {
+                document.body.removeChild(i);
+            }, 1000);
+        })
+    </script>
+</body>
+</html>

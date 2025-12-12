@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS创意等距设计</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="box">
+      <div>
+        <span>
+          <div class="container">
+            <div class="side">
+              <h2>CSS</h2>
+              <h3>Isometric</h3>
+              <h4>Design</h4>
+            </div>
+          </div>
+        </span>
+        <span>
+          <div class="container">
+            <div class="side">
+              <h2>CSS</h2>
+              <h3>Isometric</h3>
+              <h4>Design</h4>
+            </div>
+          </div>
+        </span>
+        <span>
+          <div class="container">
+            <div class="side">
+              <h2>CSS</h2>
+              <h3>Isometric</h3>
+              <h4>Design</h4>
+            </div>
+          </div>
+        </span>
+        <span>
+          <div class="container">
+            <div class="side">
+              <h2>CSS</h2>
+              <h3>Isometric</h3>
+              <h4>Design</h4>
+            </div>
+          </div>
+        </span>
+      </div>
+    </div>
+    <script>
+      var box = document.getElementById("box");
+      window.onmousemove = function(e) {
+        box.style.transform = `rotateX(-30deg) rotateY(${e.clientX}deg)`
+      }
+    </script>
+  </body>
+</html>

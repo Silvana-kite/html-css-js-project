@@ -1,0 +1,69 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #2b2b2b;
+}
+label {
+  position: relative;
+  width: 120px;
+  height: 60px;
+  background: #222;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: inset 0 2px 15px rgba(0,0,0,0.2),
+  inset 0 2px 2px rgba(0,0,0,0.2),
+  inset 0 -1px 1px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  transform: skewX(330deg);
+  cursor: pointer;
+}
+label input {
+  position: absolute;
+  appearance: none;
+}
+
+label .angle{
+  position: absolute;
+  border-left: 35px solid transparent;
+  border-right: 35px solid transparent;
+  border-bottom: 60px solid #0f0;
+  transform: skewX(30deg) scale(0.6) translateX(-16px);
+  filter: drop-shadow(0 0 10px #0f0) drop-shadow(0 0 30px #0f0);
+  transition: 0.5s;
+}
+label input:checked ~ .angle{
+  border-bottom: 60px solid #f00;
+  transform: skewX(30deg) scale(0.6) translateX(108px) rotate(180deg);
+  filter: drop-shadow(0 0 10px #f00) drop-shadow(0 0 30px #f00);
+}
+label text{
+  padding: 10px;
+  color: #fff;
+  transition: 0.5s;
+  text-transform: uppercase;
+}
+label text:nth-child(2){
+  color: #f00;
+  transform: skew(30deg) scale(0);
+  filter: drop-shadow(0 0 10px #f00) drop-shadow(0 0 30px #f00);
+}
+label input:checked ~ text:nth-child(2){
+  transform: skew(30deg) scale(1);
+}
+
+label text:nth-child(3){
+  color: #0f0;
+  transform: skew(30deg) scale(1);
+  filter: drop-shadow(0 0 10px #0f0) drop-shadow(0 0 30px #0f0);
+}
+label input:checked ~ text:nth-child(3){
+  transform: skew(30deg) scale(0);
+}

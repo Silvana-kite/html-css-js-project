@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    min-height: 100vh;
+    background: #00040d;
+    overflow: hidden;
+}
+.particle{
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: inset 0 0 2px #121212,
+    0 0 5px #1235f4,
+    0 0 10px #1235f4;
+    animation: animate linear forwards;
+}
+@keyframes animate{
+    0%{
+        opacity: 1;
+        transform: translate(0,0) scale(1);
+    }
+    100%{
+        opacity: 0;
+        transform: translate(var(--move-x),var(--move-y)) scale(1);
+    }
+}

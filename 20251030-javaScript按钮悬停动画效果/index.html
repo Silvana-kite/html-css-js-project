@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>javaScript按钮悬停动画效果</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <a href="#" class="btns">Button</a>
+      <a href="#" class="btns">Button</a>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        let btns = document.querySelectorAll(".btns");
+        btns.forEach(function(btn) {
+          const spans = [];
+          for (let i =0; i< 40; i++) {
+            let span = document.createElement("span");
+            span.style.top = `${i * 2}px`;
+            spans.push(span)
+            btn.appendChild(span);
+
+            let randomDelay = (Math.random() * 0.75) + 0;
+            span.style.transitionDelay = `${randomDelay}s`;
+          }
+        })
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript中的下一页、上一页和悬停效果一一实现平
+        滑过渡！</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="box"><span>1</span></div>
+        <div class="box"><span>2</span></div>
+        <div class="box"><span>3</span></div>
+        <div class="box"><span>4</span></div>
+        <div class="box"><span>5</span></div>
+        <div class="box"><span>6</span></div>
+    </div>
+    <script>
+        document.querySelectorAll('.box').forEach((box,index,boxes) => {
+            box.addEventListener('mouseover', () => {
+                boxes.forEach((b, i) => {
+                    let className = i < index ? 'prev' : i === index ? 'hovered' : 'next';
+                    b.classList.remove('prev', 'next', 'hovered');
+                    b.classList.add(className)
+                })
+            });
+            box.addEventListener('mouseleave', () => {
+                boxes.forEach((b) => b.classList.remove('prev', 'next', 'hovered'));
+            });
+        });
+    </script>
+</body>
+</html>
