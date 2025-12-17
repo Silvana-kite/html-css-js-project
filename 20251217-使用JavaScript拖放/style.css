@@ -1,0 +1,38 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #243128;
+}
+.container {
+  position: relative;
+  padding: 20px;
+  background: #2f4036;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  border-radius: 20px;
+  box-shadow: 0 15px 55px rgba(0,0,0,0.15);
+}
+.container .box{
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background: #213127;
+  border-radius: 10px;
+}
+.glow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #00fb70;
+  border-radius: 10px;
+  filter: drop-shadow(0 0 15px #00fb70) drop-shadow(0 0 45px #00fb70);
+}
