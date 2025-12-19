@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript刮擦效果</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <script>
+      document.addEventListener('mousemove', function(e) {
+        let body = document.querySelector('body');
+        let circle = document.createElement('span');
+        circle.style.left = -75 + e.pageX + 'px';
+        circle.style.top = -75 + e.pageY + 'px';
+        body.appendChild(circle);
+      })
+    </script>
+  </body>
+</html>
