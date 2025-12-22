@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>未来感CSS动画按钮</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <a href="#">
+      <i></i><i></i>
+      <span>Button</span>
+    </a>
+    <script>
+      let btn = document.querySelector('a');
+      btn.addEventListener('mousemove', e => {
+        let rect = e.target.getBoundingClientRect();
+        let x = e.clientX * 3 - rect.left;
+        btn.style.setProperty('--x', x + 'deg');
+      })
+    </script>
+  </body>
+</html>
