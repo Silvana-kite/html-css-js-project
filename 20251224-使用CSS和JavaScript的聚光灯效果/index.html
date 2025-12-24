@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>使用CSS和JavaScript的聚光灯效果</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="spotlight"></div>
+    <div class="content">
+      <h2>Spotlight using CSS & JavaScript</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere impedit facilis autem ea corrupti quo minima placeat. Natus incidunt accusamus placeat, sapiente, eveniet voluptates quos aperiam blanditiis ipsum qui alias. Dignissimos vel fuga repellat ipsam. Excepturi quisquam nesciunt necessitatibus saepe nostrum placeat ipsa, consequuntur voluptas optio. Similique sit dolorum architecto! Atque necessitatibus aperiam incidunt perspiciatis facere neque soluta. Voluptatem minus culpa placeat eaque cumque et quas soluta animi. Voluptate quas, quasi explicabo nisi ex eius eligendi placeat. Expedita eius quas itaque doloribus! Suscipit illo esse quo quam incidunt numquam tempora necessitatibus veritatis molestias repellendus, unde deserunt odit totam atque alias labore quaerat in quidem accusamus eius expedita harum itaque! Dolor molestiae omnis ipsam ullam totam assumenda aspernatur inventore unde eaque doloremque, repellendus voluptatum impedit quo aperiam odio tenetur, voluptas libero exercitationem? Corrupti voluptates, soluta, sit error ad obcaecati expedita provident possimus, ut architecto in? Facilis tempore animi ipsa adipisci consequuntur nostrum, recusandae quidem alias odio aspernatur numquam dolore inventore eos ex officiis doloremque corrupti neque magni soluta nesciunt reprehenderit laboriosam ullam vel assumenda. Dolore accusantium quam ad nam saepe quidem perspiciatis id iste quo molestiae, facilis unde, libero minus cum. Hic ad porro suscipit dolores itaque iure quisquam exercitationem nam.</p>
+    </div>
+
+    <script>
+      let body = document.querySelector('body');
+      let spotlight = document.querySelector('.spotlight');
+
+      window.onmousemove = function(e) {
+        spotlight.style.top = e.clientY + 'px';
+        spotlight.style.left = e.clientX + 'px';
+      }
+
+      body.ondblclick = function() {
+        body.classList.toggle('active');
+      }
+    </script>
+  </body>
+</html>
