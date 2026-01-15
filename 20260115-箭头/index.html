@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arrow</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container"></div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        let container = document.querySelector(".container");
+        for (let i = 0; i< 30; i++) {
+          let arrow = document.createElement("div");
+          arrow.classList.add("arrow");
+          arrow.style.top = `${Math.random() * 100}vh`;
+          arrow.style.left = `${Math.random() * 100}vw`;
+          container.appendChild(arrow);
+        }
+        document.querySelector('body').addEventListener('mousemove', roration);
+        function roration() {
+          let arw = document.querySelectorAll('.arrow');
+          arw.forEach(function(el) {
+            let x = (el.getBoundingClientRect().left) + (el.clientWidth / 2);
+            let y = (el.getBoundingClientRect().top) + (el.clientHeight / 2);
+            let radian = Math.atan2(event.pageX - x, event.pageY - y);
+            let rot = (radian * (180 / Math.PI) * -1) + 270;
+            el.style.transform = `rotate(${rot}deg)`;
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
