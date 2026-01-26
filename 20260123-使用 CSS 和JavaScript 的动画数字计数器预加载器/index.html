@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>使用 CSS 和JavaScript 的动画数字计数器预加载器</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="loader">
+      <div class="counter">
+        <h2 class="number"></h2>
+        <div class="progress">
+          <div class="percentBar"></div>
+        </div>
+      </div>
+    </div>
+    <h1>Welcome To Our Website</h1>
+
+    <script>
+      let i = 0;
+      let number = document.querySelector('.number');
+      let percentBar = document.querySelector('.percentBar');
+      let loader = document.querySelector('.loader');
+
+      let interval = setInterval(function(){
+        number.innerHTML = i + '<span>%</span>';
+        percentBar.style.width = i + '%';
+        i++;
+        if (i == 101) {
+          clearInterval(interval);
+          setTimeout(function(){
+            loader.style.opacity = '0';
+            loader.style.visibility - 'hidden';
+          }, 1000)
+        }
+      }, 100)
+    </script>
+  </body>
+</html>
