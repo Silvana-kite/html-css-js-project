@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CatchMe</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h2 id="text">Catch Me.</h2>
+    <script>
+      let text = document.getElementById("text");
+      function randomPosition(max){
+        return Math.random() * max;
+      }
+      function moveText(){
+        let x = randomPosition(window.innerWidth - text.offsetWidth);
+        let y = randomPosition(window.innerHeight - text.offsetHeight);
+        text.style.left = x + "px";
+        text.style.top = y + "px";
+      }
+      moveText();
+      text.addEventListener("mouseenter", moveText);
+    </script>
+  </body>
+</html>

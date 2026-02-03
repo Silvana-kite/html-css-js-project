@@ -1,0 +1,21 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+#text
+{
+    position: absolute;
+    font-size: 3em;
+    cursor: pointer;
+    transition: 0.25s;
+}
