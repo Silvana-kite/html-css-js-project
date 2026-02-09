@@ -1,0 +1,115 @@
+
+body
+{
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    margin: 0;
+    background: #963;
+    overflow: hidden; 
+}
+.toggle-wrap
+{
+    position: relative;
+}
+.coffee
+{
+    font-size: 0.75em;
+    appearance: none;
+    position: relative;
+    width: 20em;
+    height: 9em;
+    background: #eee8;
+    border-radius: 20em;
+    cursor: pointer;
+}
+.coffee::before
+{
+    content: "";
+    width: 7em;
+    aspect-ratio: 1;
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    left: 23%;
+    transform: translate(-50%,-50%) rotate(0);
+    background-image: 
+        linear-gradient(#210 0 0),
+        radial-gradient(farthest-side,#0000 90%,#fff 0 99%, #0000),
+        radial-gradient(farthest-side,#642 99%, #0000),
+        radial-gradient(farthest-side,#210 99%, #0000),
+        radial-gradient(farthest-side,#ddd 99%, #0000),
+        radial-gradient(#fff 0 0),
+        radial-gradient(farthest-side,#fff 99%, #0000),
+        radial-gradient(farthest-side,hsl(0, 0%, 87%) 99%, #0000),
+        radial-gradient(farthest-side,#0000 60%, #fff 0 99%, #0000);
+        background-repeat: no-repeat;
+        background-position: 
+            50% 50%,
+            50% 50%,
+            50% 50%,
+            50% 50%,
+            50% 50%,
+            54.5%, 24.5%,
+            55% 27.5%,
+            55% 20%,
+            45% 15%;
+        background-size: 
+            1% 50%,
+            120% 120%,
+            44% 44%,
+            44% 60%,
+            44% 60%,
+            0 0,0 0, 0 0, 0 0;
+        background-color: #00f3;
+        transition: all 0.75s ease;
+}
+.coffee:checked::before{
+    left: 77%;
+    transform: translate(-50%,-50%) rotate(360deg);
+    background-position: 
+        50% 50%,
+        55% 35%,
+        55% 39%,
+        55% 39%,
+        55% 35%,
+        55% 55%,
+        55% 71%,
+        55% 77%,
+        15% 55%;
+    background-size: 
+        0 0,
+        55% 25%,
+        48% 20%,
+        0 0,
+        54.5% 24.5%,
+        55% 27.5%,
+        55% 20%,
+        45% 15%,
+        25% 20%;
+    background-color: #f003;
+}
+.smoke{
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    background: rgba(255,255,255,0.65);
+    border-radius: 50%;
+    filter: blur(8px);
+    animation: smoke 5,2s ease-out forwards;
+}
+@keyframes smoke{
+    0%{
+        transform: translateX(0) translateY(0) scale(0.5);
+        opacity: 0.6;
+    }
+    50%{
+        opacity: 0.4;
+    }
+    100%{
+        transform: translateX(--x) translateY(-140px) scale(1.8);
+        opacity: 0;
+    }
+}
