@@ -1,0 +1,38 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body
+{
+    min-height: 100vh;
+    background: #ffee5a;
+}
+body.dark
+{
+    background: #111;
+}
+.cursor
+{
+    position: relative;
+    width: 10px;
+    height: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cursor .circle
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #f44336;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+body.dark .cursor .circle
+{
+    background: #fff;
+}
