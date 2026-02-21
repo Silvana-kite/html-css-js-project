@@ -1,0 +1,120 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+section
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+.container
+{
+    position: absolute;
+    left: -10%;
+    width: 120%;
+    height: 100vh;
+    background: url(bg.jpg);
+}
+.container #scene
+{
+    position: absolute;
+    inset: 0;
+}
+.container #scene .layer
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+}
+.container #scene .layer img
+{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.login
+{
+    position: relative;
+    padding: 60px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255,255,255,0.5);
+    border-bottom: 1px solid rgba(255,255,255,0.25);
+    border-left: 1px solid rgba(255,255,255,0.25);
+    border-radius: 20px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+}
+.login h2
+{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 10px;
+}
+.login .inputBox
+{
+    position: relative;
+}
+.login .inputBox input
+{
+    position: relative;
+    width: 100%;
+    padding: 15px 20px;
+    outline: none;
+    font-size: 1.25em;
+    color: #fff;
+    border-radius: 5px;
+    background: rgba(0,0,0,0.2);
+    box-shadow: inset 0 0 15px rgba(255,255,255,0.25);
+    border: 1px solid rgba(0,0,0,0.5);   
+}
+.login .inputBox ::placeholder
+{
+    color: rgba(255,255,255,0.5);
+}
+.login .inputBox #btn
+{
+    position: relative;
+    border: none;
+    outline: none;
+    background: linear-gradient(0deg, #2c3c99,#00b0ff);
+    cursor: pointer;
+    color: #fff;
+    font-weight: 500;
+    box-shadow: none;
+}
+.login .group
+{
+    display: flex;
+    justify-content: space-between;
+}
+.login .group a
+{
+    font-size: 1.25em;
+    color: #fff;
+    text-decoration: none;
+}
+.login .group a:nth-child(2)
+{
+    text-decoration: underline;
+}
