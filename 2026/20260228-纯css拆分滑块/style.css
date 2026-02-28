@@ -1,0 +1,100 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.slider
+{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+ul
+{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+ul li
+{
+    list-style: none;
+    margin-bottom: 50px;
+}
+ul li input
+{
+    position: relative;
+    z-index: 1000;
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+}
+ul li .slide
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+ul li .slide .face
+{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background: #fff;
+}
+ul li .slide .face.face1
+{
+    left: 0;
+    transition: transform  1s;
+    transform-origin: top;
+    transform: rotateX(90deg);
+}
+ul li .slide .face.face1 img
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+ul li .slide .face.face2
+{
+    right: 0;
+    transition: transform  1s;
+    transform-origin: bottom;
+    padding: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotateX(90deg);
+}
+ul li .slide .face.face2 h2
+{
+    font-size: 4em;
+    color: #333;
+}
+ul li .slide .face.face2 p
+{
+    font-size: 1.1em;
+    color: #333;
+    line-height: 1.7em;
+}
+ul li input[type="radio"]:checked ~ .slide .face.face1
+{
+    transform: rotateX(0deg);
+    transition: transform  1s;
+    transform-origin: bottom;
+}
+ul li input[type="radio"]:checked ~ .slide .face.face2
+{
+    transform: rotateX(0deg);
+    transition: transform  1s;
+    transform-origin: top;
+}
